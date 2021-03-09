@@ -3,6 +3,7 @@
 namespace App\Tests;
 
 use PHPUnit\Framework\TestCase;
+use App\Entity\Project;
 
 class ProjectEntityTest extends TestCase
 {
@@ -13,5 +14,19 @@ class ProjectEntityTest extends TestCase
 
         $this->assertEquals("name", $project->getName());
         $this->assertEquals("This is a description", $project->getDescription());
+    }
+
+    /** @test */
+    public function it_should_thow_ArgumentCountError_if_name_and_description_are_missing(): void
+    {
+        $this->expectException(\ArgumentCountError::class);
+        $project = new Project();
+    }
+
+    /** @test */
+    public function it_should_thow_ArgumentCountError_if_name_or_description_are_missing(): void
+    {
+        $this->expectException(\ArgumentCountError::class);
+        $project = new Project("name");
     }
 }
