@@ -8,11 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WelcomeController extends AbstractController
 {
-    #[Route('/welcome', name: 'welcome')]
+    #[Route('/', name: 'root')]
     public function index(): Response
     {
-        return $this->render('welcome/index.html.twig', [
-            'controller_name' => 'WelcomeController',
-        ]);
+        return $this->render('welcome/index.html.twig');
     }
 }
