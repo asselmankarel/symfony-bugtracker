@@ -41,9 +41,9 @@ Encore
      */
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
+    .enableSourceMaps()
     // enables hashed filenames (e.g. app.abc123.css)
-    .enableVersioning(Encore.isProduction())
+    .enableVersioning()
 
     .configureBabel((config) => {
         config.plugins.push('@babel/plugin-proposal-class-properties');
