@@ -4,9 +4,30 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container p-5">
-		<div>
-			<p>Bug tracker landing page</p>
-		</div>
+	<div class="container p-4">
+
+		<section class="is-flex is-justify-content-center pl-1 mb-6 p-4">
+			<img src="build/images/bug_fixing.svg" alt="bug fixing" style="height:40vh;">
+		</section>
+
+		<article class="panel is-primary">
+			<h3 class="panel-heading title has-text-centered">This application is built with</h3>
+			<section class="columns p-2">
+				<div class="column">
+					<img class="image px-2" style="max-height:128px" src="https://www.vectorlogo.zone/logos/php/php-horizontal.svg" alt="logo php">
+				</div>
+				<div class="column">
+					<img class="image px-2" src="https://www.vectorlogo.zone/logos/symfony/symfony-ar21.svg" alt="logo symfony">
+				</div>
+				<div class="column">
+					<img class="image px-2" src="https://www.vectorlogo.zone/logos/mysql/mysql-horizontal.svg" alt="logo mysql">
+				</div>
+				<div class="column">
+					<img class="image px-2" style="max-height:50px" src="https://bulma.io/images/bulma-logo.png" alt="logo bulma">
+				</div>
+			</section>
+		</article>
+
+
 	</div>
 {% endblock %}
