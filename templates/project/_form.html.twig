@@ -1,5 +1,32 @@
-<h2>Create a new project</h2>
-<form action="POST">
+<h2 class="my-4 subtitle">Create a new project, you will be the owner:</h2>
+<form action="{{ path('app_project_create') }}" method="POST">
+	<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+	<div class="field">
+		<label for="name">Name</label>
+		<input class="input is-primary" type="text" name="name">
+	</div>
+	<div class="field">
+		<label for="name">Description</label>
+		<input class="textarea is-primary" type="textarea" name="description">
+	</div>
+	<h3>Tags:</h3>
+	<div class="field">
+		<div class="select is-multiple">
+			<select multiple size="6" name="tags">
+				<option value="ruby">ruby</option>
+				<option value="php">php</option>
+				<option value="csharp">csharp</option>
+				<option value="perl">perl</option>
+				<option value="css">css</option>
+				<option value="html">html</option>
+				<option value="js">js</option>
+				<option value="react">react</option>
+				<option value="vue">vue</option>
+				<option value="go">go</option>
+				<option value="python">python</option>
+			</select>
+		</div>
+	</div>
 
-	<button class="button is-primary" type="submit">Create</button>
+	<button class="button is-primary is-fullwidth" type="submit">Create</button>
 </form>

@@ -5,7 +5,12 @@
 
 {% block body %}
 	<div class="container">
-		<p>Your projects</p>
+		{% if projects %}
+			<p>Your projects</p>
+		{% else %}
+			<p>You don't have any projects yet</p>
+		{% endif %}
+
 		<hr>
 
 		{% include "project/_form.html.twig" %}
