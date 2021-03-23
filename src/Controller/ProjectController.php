@@ -10,6 +10,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
 
 use App\Repository\ProjectRepository;
+use App\Repository\TagRepository;
 
 class ProjectController extends AbstractController
 {
@@ -17,16 +18,16 @@ class ProjectController extends AbstractController
     public function index(ProjectRepository $projectRepository): Response
     {
         $projects = $projectRepository->findBy(['owner' => $this->getUser()->getId()]);
-
         return $this->render('project/index.html.twig', [
             'projects' => $projects,
         ]);
     }
 
     #[Route('/project/new', name: 'app_project_new', methods: ['GET'])]
-    public function new()
+    public function new(TagRepository $tagRepository)
     {
-        return $this->render('project/new.html.twig');
+        $tags = $tagRepository->FindAll();
+        return $this->render('project/new.html.twig', ['tags' => $tags]);
     }
 
     #[Route('/project/create', name: 'app_project_create', methods: ['POST'])]
