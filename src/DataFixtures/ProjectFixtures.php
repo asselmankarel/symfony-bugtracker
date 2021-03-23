@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\DataFixtures\UserFixtures;
+use App\DataFixtures\TagFixtures;
 use App\Entity\Project;
 use App\Entity\User;
 use App\Entity\Tag;
@@ -17,23 +18,11 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         $project = new Project('Bug tracker', 'A bug tracker application for project managers, developers and clients.');
         $project->setOwner($this->getReference(UserFixtures::USER_REFERENCE));
 
-        $phpTag = new Tag();
-        $phpTag->setName('php');
-        $htmlTag = new Tag();
-        $htmlTag->setName('html');
-        $cssTag = new Tag();
-        $cssTag->setName('css');
+        $project->addTag($this->getReference(TagFixtures::PHP_REF));
+        $project->addTag($this->getReference(TagFixtures::HTML_REF));
+        $project->addTag($this->getReference(TagFixtures::CSS_REF));
 
-        $project->addTag($phpTag);
-        $project->addTag($htmlTag);
-        $project->addTag($cssTag);
-
-
-        $manager->persist($phpTag);
-        $manager->persist($htmlTag);
-        $manager->persist($cssTag);
         $manager->persist($project);
-
         $manager->flush();
     }
 
@@ -41,6 +30,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
+            TagFixtures::class
         ];
     }
 }

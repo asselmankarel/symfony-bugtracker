@@ -6,15 +6,21 @@
 {% block body %}
 	<div class="container">
 		{% if projects %}
-			<span>
+			<span class="subtitle">
 				Your projects
 			</span>
-
 		{% else %}
-			<span>
+			<span class="subtitle">
 				You don't have any projects yet
 			</span>
 		{% endif %}
-		<a class="button is-primary is-small ml-3" href="{{ path('app_project_new')}}">Add project</a>
+		<a class="button is-primary is-small ml-3" href="{{ path('app_project_new')}}">
+			<span>
+				<i class="fa fa-plus mr-2"></i>
+			</span>
+			<span>
+				Add project
+			</span>
+		</a>
 	</div>
 {% endblock %}
