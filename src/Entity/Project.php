@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,10 +35,16 @@ class Project
      */
     private $owner;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="project")
+     */
+    private $tags;
+
     public function __construct(string $name, string $description)
     {
         $this->setName($name);
         $this->setDescription($description);
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +84,33 @@ class Project
     public function setOwner(User $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->removeElement($tag)) {
+            $tag->removeProject($this);
+        }
 
         return $this;
     }
