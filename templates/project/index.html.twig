@@ -23,12 +23,12 @@
 			</span>
 		</a>
 
-		<div class="tile is-ancestor mt-3">
+		<div class="columns mt-2">
 
 			{% for project in projects %}
-				<div class="tile is-parent is-4">
+				<div class="column is-4-desktop">
 					<a href="project/show/{{project.id}}">
-						<article class="tile is-child box">
+						<article class="box">
 							<div class="title">
 								<h3>{{ project.name }}</h3>
 							</div>

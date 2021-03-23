@@ -12,10 +12,12 @@
 		<label for="name">Name</label>
 		<input class="input is-primary" type="text" name="name" required>
 	</div>
+
 	<div class="field">
 		<label for="name">Description</label>
 		<textarea class="textarea is-primary" type="textarea" name="description" required></textarea>
 	</div>
+
 	<h3>Tags:</h3>
 	<div class="field">
 		<div class="select is-multiple">
@@ -28,7 +30,7 @@
 	</div>
 
 	<div class="is-flex is-justify-content-center">
-		<input class="button is-primary mr-3" type="submit" value="Create">
-		<a href="{{ path('app_project')}}" class="button is-secondary">Back</a>
+		<input class="button is-primary mr-3" type="submit" value="Save">
+		<a href="{{ path('app_project')}}" class="button is-secondary">Cancel</a>
 	</div>
 </form>

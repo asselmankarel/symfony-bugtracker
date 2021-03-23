@@ -13,6 +13,18 @@
 
 	<div id="navbar-menu" class="navbar-menu">
 		<div class="navbar-start">
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<a class="navbar-item" href="{{ path('app_project')}}">
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fa fa-th"></i>
+						</span>
+						<span>
+							Projects
+						</span>
+					</span>
+				</a>
+			{% endif %}
 			<a class="navbar-item">
 				<span class="icon-text">
 					<span class="icon">
