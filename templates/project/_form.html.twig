@@ -1,18 +1,25 @@
-<h2 class="my-4 subtitle">Create a new project, you will be the owner:</h2>
+{% if errors is defined %}
+	{% for error in errors %}
+		<div class="notification is-warning">
+			<p>{{ error }}</p>
+		</div>
+	{% endfor %}
+{% endif %}
+
 <form action="{{ path('app_project_create') }}" method="POST">
-	<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+	<input type="hidden" name="_csrf_token" value="{{ csrf_token('create-project') }}">
 	<div class="field">
 		<label for="name">Name</label>
-		<input class="input is-primary" type="text" name="name">
+		<input class="input is-primary" type="text" name="name" required>
 	</div>
 	<div class="field">
 		<label for="name">Description</label>
-		<input class="textarea is-primary" type="textarea" name="description">
+		<textarea class="textarea is-primary" type="textarea" name="description" required></textarea>
 	</div>
 	<h3>Tags:</h3>
 	<div class="field">
 		<div class="select is-multiple">
-			<select multiple size="6" name="tags">
+			<select multiple size="6" name="tags[]" id="tags">
 				<option value="ruby">ruby</option>
 				<option value="php">php</option>
 				<option value="csharp">csharp</option>
@@ -28,5 +35,8 @@
 		</div>
 	</div>
 
-	<button class="button is-primary is-fullwidth" type="submit">Create</button>
+	<div class="is-flex is-justify-content-center">
+		<input class="button is-primary mr-3" type="submit" value="Create">
+		<a href="{{ path('app_project')}}" class="button is-secondary">Back</a>
+	</div>
 </form>

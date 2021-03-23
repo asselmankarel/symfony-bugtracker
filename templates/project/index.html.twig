@@ -6,13 +6,15 @@
 {% block body %}
 	<div class="container">
 		{% if projects %}
-			<p>Your projects</p>
+			<span>
+				Your projects
+			</span>
+
 		{% else %}
-			<p>You don't have any projects yet</p>
+			<span>
+				You don't have any projects yet
+			</span>
 		{% endif %}
-
-		<hr>
-
-		{% include "project/_form.html.twig" %}
+		<a class="button is-primary is-small ml-3" href="{{ path('app_project_new')}}">Add project</a>
 	</div>
 {% endblock %}
